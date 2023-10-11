@@ -10,10 +10,10 @@ warnings.filterwarnings("ignore")
 @st.cache_data # to load data much faster
 def load_data():
     # load csv files which gives us info about videos, subscribers, performance
-    df_agg = pd.read_csv("E:/Projects/DS-YT-dasboard/data/Aggregated_Metrics_By_Video.csv").iloc[1:,:]
-    df_subsrcibers = pd.read_csv("E:\Projects\DS-YT-dasboard\data\Aggregated_Metrics_By_Country_And_Subscriber_Status.csv")
-    df_comments =pd.read_csv("E:\Projects\DS-YT-dasboard\data\All_Comments_Final.csv")
-    df_time = pd.read_csv("E:\Projects\DS-YT-dasboard\data\Video_Performance_Over_Time.csv")
+    df_agg = pd.read_csv("E:/Projects/Youtube-Analytics-Dashboard/data/Aggregated_Metrics_By_Video.csv").iloc[1:,:]
+    df_subsrcibers = pd.read_csv("E:/Projects/Youtube-Analytics-Dashboard/data/Aggregated_Metrics_By_Country_And_Subscriber_Status.csv")
+    df_comments =pd.read_csv("E:/Projects/Youtube-Analytics-Dashboard/data/All_Comments_Final.csv")
+    df_time = pd.read_csv("E:/Projects/Youtube-Analytics-Dashboard/data/Video_Performance_Over_Time.csv")
 
     # 
     newcols =[x.encode("ascii", "ignore").decode('utf-8') for x in df_agg.columns]
@@ -102,7 +102,7 @@ if add_sidebar == 'Aggregate Metrics':
         df_pct[i] = '{:.1%}'.format
     
     #write eveything to streamlit dashboard
-    st.dataframe(df_agg_diff_final.style.map(style_red, props= 'color:red;').map(style_green, props = 'color:green;').format(df_pct))
+    st.dataframe(df_agg_diff_final.style.map(style_red, props= 'color:red;').map(style_green, props = 'color:green;').format(df_pct)) # type: ignore
 
 if add_sidebar == 'Individual Video Analysis':
     videos = tuple(df_agg['Video title'])
