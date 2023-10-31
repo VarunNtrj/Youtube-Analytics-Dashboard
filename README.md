@@ -1,2 +1,2 @@
 # Youtube-Analytics-Dashboard
- Youtuber analytics using KenJee's YT data.
+ KenJee's YT data is used to create an analytics dashboard to improve channel growth.
